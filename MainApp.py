@@ -13,17 +13,17 @@ async def on_message(message):
     if message.author == client.user:
         return
     mention = message.author.mention
-    if message.content.startswith('$hello'):
+    if message.content.startswith('lc!hello'):
         await message.channel.send("{} Hello!".format(mention))
-    elif message.content.startswith('$about'):
+    elif message.content.startswith('lc!about'):
         await message.channel.send('https://www.instagram.com/iamleocheng/')
-    elif message.content.startswith('$jokes'):
+    elif message.content.startswith('lc!jokes'):
         joke_question, joke_answer = Jokes.tell()
         await message.channel.send("{}\n\n{}".format(joke_question, joke_answer))
-    elif message.content.startswith('$memes'):
+    elif message.content.startswith('lc!memes'):
         pic = Memes.get()
         await message.channel.send(file=discord.File(pic))
-    elif message.content.startswith('$venom'):
+    elif message.content.startswith('lc!venom'):
         await message.channel.send("假猛毒")
         vid = Memes.venom()
         await message.channel.send(file=discord.File(vid))
