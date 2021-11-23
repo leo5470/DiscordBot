@@ -27,4 +27,9 @@ async def on_message(message):
         await message.channel.send("假猛毒")
         vid = Memes.venom()
         await message.channel.send(file=discord.File(vid))
+    elif message.content.startswith('lc!help'):
+        await message.channel.send("""以lc!作為開頭呼叫
+jokes：隨機產生一個笑話
+memes：隨機傳一張梗圖
+更多功能日後上線（當然，如果我有空的話）""")
 client.run('OTAwNzI2NTkzOTQ3ODQ0NjU5.YXFhAg.-wJ99DG_2l0sV4AcmT8kjz8zBFA')
