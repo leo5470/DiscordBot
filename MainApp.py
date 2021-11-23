@@ -1,5 +1,5 @@
 import discord
-import Jokes
+import Jokes, Memes
 
 client = discord.Client()
 
@@ -14,10 +14,13 @@ async def on_message(message):
         return
     mention = message.author.mention
     if message.content.startswith('$hello'):
-        await message.channel.send("{}Hello!".format(mention))
+        await message.channel.send("{} Hello!".format(mention))
     elif message.content.startswith('$about'):
         await message.channel.send('https://www.instagram.com/iamleocheng/')
     elif message.content.startswith('$jokes'):
         joke_question, joke_answer = Jokes.tell()
         await message.channel.send("{}\n\n{}".format(joke_question, joke_answer))
+    elif message.content.startswith('$memes'):
+        pic = Memes.get()
+        await message.channel.send(file=discord.File(pic))
 client.run('OTAwNzI2NTkzOTQ3ODQ0NjU5.YXFhAg.-wJ99DG_2l0sV4AcmT8kjz8zBFA')
