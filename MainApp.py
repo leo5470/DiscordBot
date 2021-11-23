@@ -6,7 +6,7 @@ client = discord.Client()
 @client.event
 async def on_ready():
     print(f'We have logged in as {client.user}')
-    game = discord.Game('尋找戀愛學分中')
+    game = discord.Game('母單19年發功中')
     await client.change_presence(status=discord.Status.online, activity=game)
 @client.event
 async def on_message(message):
