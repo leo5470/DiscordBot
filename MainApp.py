@@ -12,8 +12,9 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
+    mention = message.author.mention
     if message.content.startswith('$hello'):
-        await message.channel.send('Hello!')
+        await message.channel.send("{}Hello!".format(mention))
     elif message.content.startswith('$about'):
         await message.channel.send('https://www.instagram.com/iamleocheng/')
     elif message.content.startswith('$jokes'):
