@@ -2,17 +2,18 @@ import discord
 from discord.ext import commands
 import Jokes, Memes
 
+client = discord.Client()
 bot = commands.Bot(command_prefix= "lc!")
 
-@bot.event
+@client.event
 async def on_ready():
-    print(f'We have logged in as {bot.user}')
+    print(f'We have logged in as {client.user}')
     game = discord.Game('母單19年發功中')
-    await bot.change_presence(status=discord.Status.online, activity=game)
+    await client.change_presence(status=discord.Status.online, activity=game)
 
-@bot.event
+@client.event
 async def on_message(message):
-    if message.author == bot.user:
+    if message.author == client.user:
         return
 
 @bot.command()
