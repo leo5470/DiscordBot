@@ -57,6 +57,11 @@ async def ban(ctx, member : discord.Member, *, reason = None):
     message = f"You have been banned from {ctx.guild.name} for {reason}"
     await member.send(message)
     await ctx.channel.send(f"{member}已被relaxing234永久禁言")
-    
+
+@bot.command()
+@commands.has_role("Admin")
+async def unban(ctx, *, member_id: int):
+    await ctx.guild.unban(discord.Object(id=member_id))
+    await ctx.send(f"機器人大軍已決定赦免{member_id}")
 
 bot.run('OTAwNzI2NTkzOTQ3ODQ0NjU5.YXFhAg.-wJ99DG_2l0sV4AcmT8kjz8zBFA')
