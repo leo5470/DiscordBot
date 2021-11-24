@@ -14,6 +14,7 @@ async def on_ready():
 async def on_message(message):
     if message.author == bot.user:
         return
+<<<<<<< HEAD
 
 @bot.command()
 async def hello(ctx):
@@ -25,12 +26,32 @@ async def hello(ctx):
 async def about(ctx):
     await ctx.send('Author: https://www.instagram.com/iamleocheng/')
     await ctx.send("""以lc!作為開頭呼叫
+=======
+    mention = message.author.mention
+    if message.content.startswith('lc!hello'):
+        await message.reply("Hello, {}!".format(mention))
+    elif message.content.startswith('lc!about'):
+        await message.channel.send('https://www.instagram.com/iamleocheng/')
+    elif message.content.startswith('lc!jokes'):
+        joke_question, joke_answer = Jokes.tell()
+        await message.reply("{}\n\n{}".format(joke_question, joke_answer))
+    elif message.content.startswith('lc!memes'):
+        pic = Memes.get()
+        await message.channel.send(file=discord.File(pic))
+    elif message.content.startswith('lc!venom'):
+        await message.channel.send("假猛毒")
+        vid = Memes.venom()
+        await message.channel.send(file=discord.File(vid))
+    elif message.content.startswith('lc!help'):
+        await message.channel.send("""以lc!作為開頭呼叫
+>>>>>>> parent of c9a11db (Update MainApp.py)
 jokes：隨機產生一個笑話
 memes：隨機傳一張梗圖
 更多功能日後上線（當然，如果我有空的話）""")
     return
 
 @bot.command()
+<<<<<<< HEAD
 async def jokes(ctx):
     joke_question, joke_answer = Jokes.tell()
     await ctx.reply("{}\n\n{}".format(joke_question, joke_answer))
@@ -50,6 +71,8 @@ async def venom(ctx):
     return
 
 @bot.command()
+=======
+>>>>>>> parent of c9a11db (Update MainApp.py)
 @commands.has_role("Admin")
 async def ban(ctx, member : discord.Member, *, reason = None):
     await member.ban(reason = reason)
