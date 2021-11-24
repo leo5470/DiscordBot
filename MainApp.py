@@ -48,7 +48,6 @@ async def hello(ctx):
 @bot.command()
 @commands.has_role("Admin")
 async def ban(ctx, member : discord.Member, *, reason = None):
-    await member.ban(reason = reason)
     if member == None or member == ctx.message.author:
         await ctx.channel.send("You cannot ban yourself")
         return
@@ -57,11 +56,12 @@ async def ban(ctx, member : discord.Member, *, reason = None):
     message = f"You have been banned from {ctx.guild.name} for {reason}"
     await member.send(message)
     await ctx.channel.send(f"{member}已被relaxing234永久禁言")
+    await member.ban(reason = reason)
 
 @bot.command()
 @commands.has_role("Admin")
-async def unban(ctx, *, member_id: int):
-    await ctx.guild.unban(discord.Object(id=member_id))
-    await ctx.send(f"機器人大軍已決定赦免{member_id}")
+async def unban(ctx, *, member : discord.Member):
+    await member.unban(reason= None)
+    await ctx.channel.send(f"機器人大軍已決定赦免{member}")
 
 bot.run('OTAwNzI2NTkzOTQ3ODQ0NjU5.YXFhAg.-wJ99DG_2l0sV4AcmT8kjz8zBFA')
