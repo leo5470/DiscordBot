@@ -9,7 +9,7 @@ async def on_ready():
     print(f'We have logged in as {bot.user}')
     game = discord.Game('母單19年發功中')
     await bot.change_presence(status=discord.Status.online, activity=game)
-    return
+
 @bot.event
 async def on_message(message):
     if message.author == bot.user:
@@ -19,7 +19,6 @@ async def on_message(message):
 async def hello(ctx):
     mention = ctx.author.mention
     await ctx.send("Hello, {}".format(mention))
-    return
 
 @bot.command()
 async def about(ctx):
@@ -28,26 +27,22 @@ async def about(ctx):
 jokes：隨機產生一個笑話
 memes：隨機傳一張梗圖
 更多功能日後上線（當然，如果我有空的話）""")
-    return
 
 @bot.command()
 async def jokes(ctx):
     joke_question, joke_answer = Jokes.tell()
     await ctx.reply("{}\n\n{}".format(joke_question, joke_answer))
-    return
 
 @bot.command()
 async def memes(ctx):
     pic = Memes.get()
     await ctx.send(file=discord.File(pic))
-    return
 
 @bot.command()
 async def venom(ctx):
     await ctx.channel.send("假猛毒")
     vid = Memes.venom()
     await ctx.send(file=discord.File(vid))
-    return
 
 @bot.command()
 @commands.has_role("Admin")
@@ -61,7 +56,6 @@ async def ban(ctx, member : discord.Member, *, reason = None):
     message = f"You have been banned from {ctx.guild.name} for {reason}"
     await member.send(message)
     await ctx.send(f"{member}已被Relaxing234永久禁言")
-    return
     
 
 bot.run('OTAwNzI2NTkzOTQ3ODQ0NjU5.YXFhAg.-wJ99DG_2l0sV4AcmT8kjz8zBFA')
