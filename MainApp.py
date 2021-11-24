@@ -15,26 +15,30 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
-    mention = message.author.mention
-    if message.content.startswith('lc!jokes'):
-        joke_question, joke_answer = Jokes.tell()
-        await message.reply("{}\n\n{}".format(joke_question, joke_answer))
-    elif message.content.startswith('lc!memes'):
-        pic = Memes.get()
-        await message.channel.send(file=discord.File(pic))
-    elif message.content.startswith('lc!venom'):
-        await message.channel.send("假猛毒")
-        vid = Memes.venom()
-        await message.channel.send(file=discord.File(vid))
-    elif message.content.startswith('lc!help'):
-        await message.channel.send("""以lc!作為開頭呼叫
-jokes：隨機產生一個笑話
-memes：隨機傳一張梗圖
-更多功能日後上線（當然，如果我有空的話）""")
+
+@bot.command()
+async def venom(ctx):
+    await ctx.channel.send("假猛毒")
+    vid = Memes.venom()
+    await ctx.channel.send(file=discord.File(vid))
+
+@bot.command()
+async def memes(ctx):
+    pic = Memes.get()
+    await ctx.channel.send(file=discord.File(pic))
+
+@bot.command()
+async def jokes(ctx):
+    joke_question, joke_answer = Jokes.tell()
+    await ctx.reply("{}\n\n{}".format(joke_question, joke_answer))
 
 @bot.command()
 async def about(ctx):
     await ctx.channel.send('https://www.instagram.com/iamleocheng/')
+    await ctx.channel.send("""以lc!作為開頭呼叫
+jokes：隨機產生一個笑話
+memes：隨機傳一張梗圖
+更多功能日後上線（當然，如果我有空的話）""")
 
 @bot.command()
 async def hello(ctx):
