@@ -16,9 +16,7 @@ async def on_message(message):
     if message.author == client.user:
         return
     mention = message.author.mention
-    if message.content.startswith('lc!hello'):
-        await message.reply("Hello, {}!".format(mention))
-    elif message.content.startswith('lc!about'):
+    if message.content.startswith('lc!about'):
         await message.channel.send('https://www.instagram.com/iamleocheng/')
     elif message.content.startswith('lc!jokes'):
         joke_question, joke_answer = Jokes.tell()
@@ -35,6 +33,11 @@ async def on_message(message):
 jokes：隨機產生一個笑話
 memes：隨機傳一張梗圖
 更多功能日後上線（當然，如果我有空的話）""")
+
+@bot.command()
+async def hello(ctx):
+    mention = ctx.author.mention
+    await ctx.channel.send("Hello, {}".format(mention))
 
 @bot.command()
 @commands.has_role("Admin")
