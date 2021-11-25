@@ -34,11 +34,13 @@ async def jokes(ctx):
 
 @bot.command()
 async def about(ctx):
+    inviteLink = await ctx.channel.create_invite()
     await ctx.channel.send('https://www.instagram.com/iamleocheng/')
     await ctx.channel.send("""以lc!作為開頭呼叫
 jokes：隨機產生一個笑話
 memes：隨機傳一張梗圖
 更多功能日後上線（當然，如果我有空的話）""")
+    await ctx.channel.send(f"邀請連結： {inviteLink}")
 
 @bot.command()
 async def hello(ctx):
