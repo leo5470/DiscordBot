@@ -5,7 +5,7 @@ import Jokes, Memes
 client = discord.Client()
 bot = commands.Bot(command_prefix= "lc!")
 
-@client.event
+@bot.event
 async def on_ready():
     print(f'We have logged in as {client.user}')
     game = discord.Game('母單19年發功中')
