@@ -62,9 +62,7 @@ async def ban(ctx, member : discord.Member, *, reason = None):
 @commands.has_role("Admin")
 async def unban(ctx, user : discord.User):
     await ctx.guild.unban(user)
-    inviteLink = await ctx.channel.create_invite()
-    await user.send(f"""您已被{ctx.guild.name} unban，重新加入:
-{inviteLink}""")
+    await user.send(f"您已被{ctx.guild.name} unban")
     await ctx.channel.send(f"機器人大軍已決定赦免{user}")
 
 bot.run('OTAwNzI2NTkzOTQ3ODQ0NjU5.YXFhAg.-wJ99DG_2l0sV4AcmT8kjz8zBFA')
