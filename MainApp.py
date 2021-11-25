@@ -54,14 +54,17 @@ async def ban(ctx, member : discord.Member, *, reason = None):
     if reason == None:
         reason = "過於智障"
     await member.ban(reason = reason)
-    message = f"You have been banned from {ctx.guild.name} for {reason}"
+    message = f"您已從{ctx.guild.name}被ban出，原因為{reason}"
     await member.send(message)
     await ctx.channel.send(f"{member}已被relaxing234永久禁言")
 
 @bot.command()
 @commands.has_role("Admin")
-async def unban(ctx, user : discord.User, reason = None):
+async def unban(ctx, user : discord.User):
     await ctx.guild.unban(user)
+    inviteLinq = await bot.create_invite(destination = ctx.message.server, xkcd = True, max_uses = 1)
+    await user.send(f"""您已被{ctx.guild.name} unban，重新加入:
+{inviteLinq}""")
     await ctx.channel.send(f"機器人大軍已決定赦免{user}")
 
 bot.run('OTAwNzI2NTkzOTQ3ODQ0NjU5.YXFhAg.-wJ99DG_2l0sV4AcmT8kjz8zBFA')
