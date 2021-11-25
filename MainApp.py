@@ -61,7 +61,7 @@ async def ban(ctx, member : discord.Member, *, reason = None):
 @bot.command()
 @commands.has_role("Admin")
 async def unban(ctx, user : discord.User, reason = None):
-    await user.unban(reason)
+    await ctx.guild.unban(user)
     await ctx.channel.send(f"機器人大軍已決定赦免{user}")
 
 bot.run('OTAwNzI2NTkzOTQ3ODQ0NjU5.YXFhAg.-wJ99DG_2l0sV4AcmT8kjz8zBFA')
