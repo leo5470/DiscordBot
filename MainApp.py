@@ -53,10 +53,10 @@ async def ban(ctx, member : discord.Member, *, reason = None):
         return
     if reason == None:
         reason = "過於智障"
+    await member.ban(reason = reason)
     message = f"You have been banned from {ctx.guild.name} for {reason}"
     await member.send(message)
     await ctx.channel.send(f"{member}已被relaxing234永久禁言")
-    await member.ban(reason = reason)
 
 @bot.command()
 @commands.has_role("Admin")
