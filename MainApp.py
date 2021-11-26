@@ -2,7 +2,6 @@ import discord
 from discord.ext import commands
 import Jokes, Memes
 
-client = discord.Client()
 bot = commands.Bot(command_prefix= "lc!")
 
 @bot.event
