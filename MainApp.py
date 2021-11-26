@@ -11,11 +11,6 @@ async def on_ready():
     game = discord.Game('母單19年發功中')
     await bot.change_presence(status=discord.Status.online, activity=game)
 
-@bot.event
-async def on_message(message):
-    if message.author == bot.user:
-        return
-
 @bot.command()
 async def venom(ctx):
     await ctx.channel.send("假猛毒")
