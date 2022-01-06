@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import Jokes, Memes
 
+key = 'OTAwNzI2NTkzOTQ3ODQ0NjU5.YXFhAg.-wJ99DG_2l0sV4AcmT8kjz8zBFA'
 client = discord.Client()
 bot = commands.Bot(command_prefix= "lc!")
 
@@ -65,4 +66,4 @@ async def unban(ctx, user : discord.User):
     await ctx.channel.send(f"機器人大軍已決定赦免{user}")
     print("Unban called")
 
-bot.run('OTAwNzI2NTkzOTQ3ODQ0NjU5.YXFhAg.-wJ99DG_2l0sV4AcmT8kjz8zBFA')
+bot.run(key)
